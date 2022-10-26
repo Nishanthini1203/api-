@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starwars</title>
+    <style>
+       body{
+        background-color:#89CFF0;
+        color:rgb(8, 106, 106);
+        text-align: center;
+        text-decoration: wavy;
+       }
+       
+       
+        .name{
+        text-align: center;
+        text-transform: capitalize;
+        text-decoration: solid;
+        font-family: cursive;
+       }
+       img
+       {
+        width: 400px;
+        height: auto;
+        box-shadow: 10px 10px 10px;
+        display: block;
+        margin: auto;
+       }
+       button{
+        background-color:#95A3FC;
+        color:azure;
+        text-decoration: wavy;
+        font-size: large;
+        font-style: italic;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+       }
+    </style>
+</head>
+<body>
+    <button>OVER HERE</button>    
+
+    <h1> This is </h1>
+    <h1 class="name"></h1>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <img src="" class="char-img" alt="">
+    <p>This is my profile</p>
+
+    <p>My Unique Traits </p>
+    <ul>
+        <li class="a"></li>
+        <li class="b"></li>
+        <li class="c"></li>
+    </ul>
+   
+    <p>
+        Drop by at <i class="place"></i> to say HI!!!
+    </p>
+    <br/>
+    Check me out at <a class="web"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            //jquery in here
+            $("button").on("click", function() {
+                const x = Math.ceil(Math.random() * 88)
+                $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${x}.json`, function(data) {
+                    $("h1.name").text(data['name'])
+                    $(".char-img").attr("src", data['image'])
+                    $("i.place").text(data['homeworld'])
+                    $("li.a").text(data['hairColor'])
+                    $("li.b").text(data['skinColor'])
+                    $("li.c").text(data['eyeColor'])
+                    $("a.web").text(data['wiki'])
+                })
+            })
+        })
+        
+    </script>
+</body>
+</html>
